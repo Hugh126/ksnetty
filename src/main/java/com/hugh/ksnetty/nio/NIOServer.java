@@ -18,6 +18,14 @@ import java.util.Set;
  * 3、Selector监听select方法，返回事件发生的通道
  * 4、遍历SelectionKey，反向通过channel()获取SocketChannel
  * 5、通过Channel，处理事件
+ *
+ *
+ *
+ * 总结：
+ * 1、 - ServerSocketChannel用于服务端监听新客户端的Socket连接
+ *     - SocketChannel 网络IO通道，具体负责读写操作
+ *
+ *
  */
 public class NIOServer {
 
