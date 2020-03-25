@@ -1,4 +1,4 @@
-package com.hugh.ksnetty.netty;
+package com.hugh.ksnetty.netty.tcp;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;

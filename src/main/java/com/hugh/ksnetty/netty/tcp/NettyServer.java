@@ -1,10 +1,7 @@
-package com.hugh.ksnetty.netty;
+package com.hugh.ksnetty.netty.tcp;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -45,6 +42,11 @@ public class NettyServer {
         ServerBootstrap serverBootstrap = new ServerBootstrap();
 
         try{
+            /**
+             * serverBootstrap
+             * 给boosGroup加handle 使用 .handle()
+             * 给workerGroup加handle 使用 .childHandle()
+             */
 
             // 参数配置
             serverBootstrap.group(bossGroup, workerGroup)   // 设置两个线程组
@@ -67,8 +69,21 @@ public class NettyServer {
 
             System.out.println("服务器已经准备好了。。。。。。");
 
+            /**
+             * Netty的异步模型 -- Future-Listener 机制
+             * ChannelFuture
+             */
+
             // 绑定一个端口并且同步
             ChannelFuture channelFuture = serverBootstrap.bind(7000).sync();
+
+            channelFuture.addListener((ChannelFutureListener) future -> {
+                if(future.isSuccess()) {
+                    System.out.println("端口绑定成功");
+                }else{
+                    System.out.println("端口绑定失败");
+                }
+            });
 
             // 监听关闭事件
             channelFuture.channel().closeFuture().sync();

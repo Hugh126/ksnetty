@@ -1,4 +1,4 @@
-package com.hugh.ksnetty.netty;
+package com.hugh.ksnetty.netty.tcp;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
