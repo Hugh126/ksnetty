@@ -26,7 +26,10 @@ public class HttpServerInit extends ChannelInitializer<SocketChannel> {
         // 2. 新增handle
         pipeline.addLast("MyHandle", new HttpServerHandle());
 
-
+        /**
+         * 这里打断点，观察  ChannelPipeline 的双向链表结构，以及与 ChannelHandler 的包含关系
+         */
+        System.out.println("服务端已OK");
 
     }
 }
