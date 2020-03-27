@@ -25,7 +25,7 @@ public class NettyGCClient {
     private final static int port = 7000;
     private final static String host = "localhost";
 
-    private void run() {
+    public void run() {
 
         NioEventLoopGroup workGroups = new NioEventLoopGroup();
 
