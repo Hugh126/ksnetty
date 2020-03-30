@@ -1,4 +1,4 @@
-package com.hugh.ksnetty.nio;
+package com.hugh.ksnetty.nio.demo;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

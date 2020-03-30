@@ -1,4 +1,4 @@
-package com.hugh.ksnetty.nio;
+package com.hugh.ksnetty.nio.demo;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -48,7 +48,7 @@ public class NIOServer {
 
         // 循环等待客户端连接
         while (true) {
-            // 操作selector => SelectionKey => channel
+            // 操作selector => SelectionKey => component
             if (selector.select(1000L) == 0) {
                 System.out.println("没有事件发生");
                 continue;
@@ -77,10 +77,10 @@ public class NIOServer {
                     System.out.println("有读写事件发生");
                     // 通过 selectedKey反向获取 SocketChannel
                     SocketChannel channel = (SocketChannel) selectionKey.channel();
-                    // 通过 selectedKey 获取 channel 对应的 buffer
+                    // 通过 selectedKey 获取 component 对应的 buffer
                     ByteBuffer byteBuffer = (ByteBuffer) selectionKey.attachment();
                     channel.read(byteBuffer);
-                    System.out.println("socket channel = " + channel.hashCode());
+                    System.out.println("socket component = " + channel.hashCode());
                     System.out.println("接受到消息" + new String(byteBuffer.array()));
                 }
 

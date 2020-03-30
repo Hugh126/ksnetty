@@ -1,4 +1,4 @@
-package com.hugh.ksnetty.groupchat;
+package com.hugh.ksnetty.nio.groupchat;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

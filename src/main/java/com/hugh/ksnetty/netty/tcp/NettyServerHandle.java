@@ -21,7 +21,7 @@ public class NettyServerHandle extends ChannelInboundHandlerAdapter {
     /**
      * 读取数据事件
      *
-     * ChannelHandlerContext  重量级对象，包含 {pipeline}  {channel} {address}
+     * ChannelHandlerContext  重量级对象，包含 {pipeline}  {component} {address}
      * 本质上是双向链表
      *
      * @param ctx

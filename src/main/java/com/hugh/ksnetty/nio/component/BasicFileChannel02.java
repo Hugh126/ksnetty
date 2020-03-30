@@ -1,4 +1,4 @@
-package com.hugh.ksnetty.nio;
+package com.hugh.ksnetty.nio.component;
 
 import java.io.*;
 import java.nio.ByteBuffer;
@@ -13,7 +13,7 @@ import java.nio.channels.FileChannel;
  * <p>
  * #一次性读取#
  * ByteBuffer byteBuffer = ByteBuffer.allocate((int) file.length());
- * channel.read(byteBuffer);
+ * component.read(byteBuffer);
  * <p>
  * #下面为边度编写实现#
  * <p>

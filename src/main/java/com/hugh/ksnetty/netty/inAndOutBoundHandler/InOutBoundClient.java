@@ -1,4 +1,4 @@
-package com.hugh.ksnetty.netty.groupchat;
+package com.hugh.ksnetty.netty.inAndOutBoundHandler;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
@@ -8,24 +8,19 @@ import io.netty.channel.ChannelPipeline;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
 
 import java.util.Scanner;
 
 /**
  * @author hugh
- * @Title: NettyGCClient
+ * @Title: InOutBoundClient
  * @ProjectName ksnetty
  * @Description: TODO
- * @date 2020/3/2616:08
+ * @date 2020/3/3016:49
  */
-public class NettyGCClient {
+public class InOutBoundClient {
 
-    private final static int port = 7000;
-    private final static String host = "localhost";
-
-    public void run() {
+    public static void main(String[] args) {
 
         NioEventLoopGroup workGroups = new NioEventLoopGroup();
 
@@ -38,21 +33,19 @@ public class NettyGCClient {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline pipeline = ch.pipeline();
-                            pipeline.addLast("client-encoder", new StringEncoder());
-                            pipeline.addLast("client-decoder", new StringDecoder());
-                            // 业务handle
-                            pipeline.addLast(new NettyGCClientHandle());
+
+                            pipeline.addLast(new MyLongToByteEncoder());
+
+                            pipeline.addLast(new MyByteToLongDecoder());
+
+                            pipeline.addLast(new MyClientHandler());
                         }
                     });
 
-            ChannelFuture channelFuture = bootstrap.connect(host, port).sync();
+            ChannelFuture channelFuture = bootstrap.connect("localhost", 7000).sync();
+            System.out.println("客户端OK");
 
-            /**
-             *  客户端发送信息窗口
-             *  scanner -> msg ->component
-             */
             Channel channel = channelFuture.channel();
-            System.out.println("----" + channel.localAddress() + "-----");
 
             Scanner scanner = new Scanner(System.in);
             while (scanner.hasNextLine()) {
@@ -66,9 +59,7 @@ public class NettyGCClient {
         } finally {
             workGroups.shutdownGracefully();
         }
+
     }
 
-    public static void main(String[] args) {
-        new NettyGCClient().run();
-    }
 }

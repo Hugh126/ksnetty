@@ -55,7 +55,7 @@ public class NettyServer {
                     .childOption(ChannelOption.SO_KEEPALIVE, true)  //  保持活动连接状态
                     .childHandler(new ChannelInitializer<SocketChannel>() { // 设置workGroup 的EventLoop 对应管道的 处理器(可以是 Netty提供，或自定义的)
 
-                        // pipeline 与 channel 是相互包含的！
+                        // pipeline 与 component 是相互包含的！
                         // 给pipeline设置handle
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {

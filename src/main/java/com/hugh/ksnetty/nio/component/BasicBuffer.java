@@ -1,4 +1,4 @@
-package com.hugh.ksnetty.nio;
+package com.hugh.ksnetty.nio.component;
 
 import java.nio.IntBuffer;
 

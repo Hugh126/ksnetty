@@ -1,4 +1,4 @@
-package com.hugh.ksnetty.nio;
+package com.hugh.ksnetty.nio.component;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
