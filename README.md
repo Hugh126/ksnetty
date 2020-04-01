@@ -1,7 +1,7 @@
 
 # 开撕Netty
 
-> “不通笔墨不读书”的道理到哪都一样,因此搞了这一套来记录下。
+> “不动笔墨不读书”的道理到哪都一样, 边学边练习同时记录下。
 > 另外，课件地址：https://pan.baidu.com/s/1yMAtTG36W3ekVO_zqDnkew 提取码: his7 
 
 - 跟着一个好的教程学一套比零零散散看书来的实惠。推荐下韩顺平老师的《[尚硅谷韩顺平Netty视频教程](https://www.bilibili.com/video/av76227904/)》
@@ -44,5 +44,9 @@
     - 心跳检测
 
     - 基于websocket的全双工通信
+    
+    - InboundHandler与OutBoundHandler调用关系
+    
+    
     
     

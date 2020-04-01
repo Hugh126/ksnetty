@@ -7,12 +7,18 @@ import io.netty.handler.codec.ByteToMessageDecoder;
 import java.util.List;
 
 /**
- * @author hugh
- * @Title: MyByteToLongDecoder
- * @ProjectName ksnetty
- * @Description: TODO
- * @date 2020/3/3016:50
+ * 其他编码器：
+ *
+ * ReplayingDecoder ，使用Void作状态管理，不需要判断读入byte长度
+ * LineBasedFrameDecoder 行尾控制解码器， 按/r/n 或 /n 分隔
+ *
+ * DelimiterBasedFrameDecoder 自定义特殊字符作分隔
+ *
+ * LengthFieldBasedFrameDecoder 指定长度来标识整个包，这样可以自动处理TCP的黏包和半包消息
+ *
  */
+
+
 public class MyByteToLongDecoder extends ByteToMessageDecoder {
 
 
