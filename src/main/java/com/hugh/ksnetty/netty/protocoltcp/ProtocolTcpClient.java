@@ -1,4 +1,4 @@
-package com.hugh.ksnetty.netty.inAndOutBoundHandler;
+package com.hugh.ksnetty.netty.protocoltcp;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
@@ -9,14 +9,12 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
+import java.util.Scanner;
+
 /**
  * @author hugh
- * @Title: InOutBoundClient
- * @ProjectName ksnetty
- * @Description: TODO
- * @date 2020/3/3016:49
  */
-public class InOutBoundClient {
+public class ProtocolTcpClient {
 
     public static void main(String[] args) {
 
@@ -32,20 +30,23 @@ public class InOutBoundClient {
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline pipeline = ch.pipeline();
 
-                            pipeline.addLast(new MyLongToByteEncoder());
+                            /**
+                             *  口袋要放在前面， 业务handler放后面， 反了不行
+                             */
 
-                            pipeline.addLast(new MyByteToLongDecoder());
+                            pipeline.addLast(new ProtocolMsgEncoder());
+                            pipeline.addLast(new ProtocolMsgDecoder());
 
-                            pipeline.addLast(new MyClientHandler());
+                            pipeline.addLast(new ProtocolTcpClientHandler());
+
                         }
                     });
 
             ChannelFuture channelFuture = bootstrap.connect("localhost", 7000).sync();
             System.out.println("客户端OK");
+            channelFuture.channel().closeFuture().sync();
 
-            Channel channel = channelFuture.channel();
 
-            channel.closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
