@@ -24,13 +24,13 @@
 5. Reactor响应模式  
 推荐了大师Doug Lea的《Scalable IO in Java》，所谓一图胜千言，来:   
     - 传统服务设计模式
- ![](img/classic.png)
+ ![](./img/classic.png)
     - Ractor单线程设计模式
- ![](img/Ractor单线程.png)
+ ![](./img/Ractor单线程.png)
    - Ractor多线程设计模式
- ![](img/Ractor多线程.png)
+ ![](./img/Ractor多线程.png)
    - Ractor主从多线程设计模式（netty）
- ![](img/Ractor主从多线程.png)
+ ![](./img/Ractor主从多线程.png)
 
 6. 基于NIO的聊天室程序  
 
